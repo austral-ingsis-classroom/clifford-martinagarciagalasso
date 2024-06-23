@@ -1,8 +1,26 @@
 package edu.austral.ingsis.clifford.commands;
 
-public class Mkdir implements Commands{
+import edu.austral.ingsis.clifford.FileSystem;
+import edu.austral.ingsis.clifford.directories.Directory;
+
+
+public class Mkdir implements Commands {
+    private final FileSystem fileSystem;
+    private final String name;
+
+    public Mkdir(FileSystem fileSystem, String name) {
+        this.fileSystem = fileSystem;
+        this.name = name;
+    }
+
     @Override
     public String execute() {
-        return null;
+        if (name.isEmpty()) {
+            return "Error: Directory name cannot be empty";
+        }
+        if (name.contains("/") || name.contains(" ")) {
+            return "Error: Directory name cannot contain '/' or spaces";
+        }
+
     }
 }

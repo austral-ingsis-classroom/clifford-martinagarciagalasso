@@ -13,7 +13,7 @@ public class Touch implements Commands {
         this.fileSystem = fileSystem;
         this.name = name;
     }
-    
+
     @Override
     public String execute() {
         if (name.contains("/")) {

@@ -25,7 +25,7 @@ public class Directory implements Node {
         this.parent = null;
         this.children = new ArrayList<>();
     }
-    void addChild(Node node) {
+    public void addChild(Node node) {
         children.add(node);
     }
     public void removeChild(Node node) {
