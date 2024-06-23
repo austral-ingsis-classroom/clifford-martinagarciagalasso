@@ -22,5 +22,12 @@ public class Mkdir implements Commands {
             return "Error: Directory name cannot contain '/' or spaces";
         }
 
+        try {
+           Directory newDirectory = new Directory(name, fileSystem.getCurrentDirectory());
+           fileSystem.getCurrentDirectory().addChild(newDirectory);
+           return "'" + name + "' directory created";
+        } catch (IllegalArgumentException e) {
+            return "Error: " + e.getMessage();
+        }
     }
 }
