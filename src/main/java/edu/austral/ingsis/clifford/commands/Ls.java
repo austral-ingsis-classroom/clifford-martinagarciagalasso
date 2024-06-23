@@ -13,8 +13,9 @@ public class Ls implements Commands{
     private final FileSystem fileSystem;
     private String params;
 
-    public Ls(FileSystem fileSystem) {
+    public Ls(FileSystem fileSystem, String params) {
         this.fileSystem = fileSystem;
+        this.params = params;
     }
     @Override
     public String execute() {

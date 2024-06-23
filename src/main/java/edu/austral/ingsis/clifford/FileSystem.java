@@ -1,5 +1,6 @@
 package edu.austral.ingsis.clifford;
 
+import edu.austral.ingsis.clifford.commands.*;
 import edu.austral.ingsis.clifford.directories.Directory;
 
 public class FileSystem {
@@ -16,6 +17,7 @@ public class FileSystem {
         this.currentDirectory = root;
     }
     public Directory getCurrentDirectory() {
+
         return currentDirectory;
     }
 
@@ -24,5 +26,51 @@ public class FileSystem {
     }
     public Directory getRoot() {
         return root;
+    }
+
+    //para ejecutar comandos
+    public String executeMyCommand(String commandLine) {
+        String[] tokens = commandLine.split(" ");
+        String commandName = tokens[0];
+
+        Commands command = null;
+
+        switch (commandName) {
+            case "ls":
+                String param = tokens.length > 1 ? tokens[1].split("=")[1] : null;
+                command = new Ls(this, param);
+                break;
+            case "cd":
+                String path = tokens[1];
+                command = new Cd(path, this);
+                break;
+            case "touch":
+                String fileName = tokens[1];
+                command = new Touch(this, fileName);
+                break;
+            case "mkdir":
+                String dirName = tokens[1];
+                command = new Mkdir(this, dirName);
+                break;
+            case "rm":
+                String name;
+                boolean recursive = false;
+                if (tokens.length > 2) {
+                    name = tokens[2];
+                    recursive = tokens[1].equals("--recursive");
+                } else {
+                    name = tokens[1];
+                }
+                command = new Rm(this, name, recursive);
+                break;
+            case "pwd":
+                command = new Pwd(this);
+                break;
+            default:
+                return "Error: Unknown command";
+        }
+
+        return command.execute();
+
     }
 }

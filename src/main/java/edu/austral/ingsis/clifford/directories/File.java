@@ -32,8 +32,4 @@ public class File implements Node {
         return children;
     }
 
-    @Override
-    public Date getCreationDate() {
-        return null;
-    }
 }
