@@ -52,11 +52,11 @@ public class Cd implements Commands {
 
         if (parentDirectory == null) {
             fileSystem.setCurrentDirectory(fileSystem.getRoot());
-            return "moved to root directory '/'";
+            return "moved to directory '/'";
         } else {
             fileSystem.setCurrentDirectory(parentDirectory);
             if (parentDirectory == fileSystem.getRoot()) {
-                return "moved to root directory '/'";
+                return "moved to directory '/'";
             }
             return "moved to directory '" + parentDirectory.getName() + "'";
         }
@@ -64,7 +64,7 @@ public class Cd implements Commands {
 
     private String moveToRootDirectory(FileSystem fileSystem) {
         fileSystem.setCurrentDirectory(fileSystem.getRoot());
-        return "moved to root directory '/'";
+        return "moved to directory '/'";
     }
 
     private String navigateToSpecifiedDirectory(String params, FileSystem fileSystem) {
@@ -75,11 +75,11 @@ public class Cd implements Commands {
         if (targetDirectory != null) {
             fileSystem.setCurrentDirectory(targetDirectory);
             if (targetDirectory == fileSystem.getRoot()) {
-                return "moved to root directory '/'";
+                return "moved to directory '/'";
             }
             return "moved to directory '" + targetDirectory.getName() + "'";
         } else {
-            return "Directory '" + params + "' does not exist";
+            return "'" + params + "' directory does not exist";
         }
     }
 
