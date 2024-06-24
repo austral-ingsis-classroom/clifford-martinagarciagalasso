@@ -9,13 +9,11 @@ import java.util.List;
 public class File implements Node {
     private final String name;
     private final Directory parent;
-    private final List<Node> children;
+
     public File(String name, Directory parent) {
         this.name = name;
-        parent.addChild(this);
         this.parent = parent;
-        this.children = new ArrayList<>();
-
+        parent.addChild(this);
     }
     @Override
     public String getName() {
@@ -27,9 +25,6 @@ public class File implements Node {
         return parent;
     }
 
-    @Override
-    public List<Node> getChildren() {
-        return children;
-    }
+
 
 }

@@ -30,9 +30,13 @@ public class FileSystem {
 
     //para ejecutar comandos
     public String executeMyCommand(String commandLine) {
-        String[] tokens = commandLine.split(" ");
-        String commandName = tokens[0];
 
+        try {
+            String[] tokens = commandLine.split(" ");
+            if (tokens.length == 0) {
+                return "Error: Empty command";
+            }
+        String commandName = tokens[0];
         Commands command = null;
 
         switch (commandName) {
@@ -72,5 +76,8 @@ public class FileSystem {
 
         return command.execute();
 
+    } catch (Exception e) {
+        return "Error: " + e.getMessage();
+    }
     }
 }

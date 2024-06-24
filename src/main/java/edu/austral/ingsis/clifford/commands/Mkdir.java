@@ -15,18 +15,14 @@ public class Mkdir implements Commands {
 
     @Override
     public String execute() {
-        if (name.isEmpty()) {
-            return "Error: Directory name cannot be empty";
-        }
-        if (name.contains("/") || name.contains(" ")) {
-            return "Error: Directory name cannot contain '/' or spaces";
-        }
-
         try {
-           Directory newDirectory = new Directory(name, fileSystem.getCurrentDirectory());
-           fileSystem.getCurrentDirectory().addChild(newDirectory);
-           return "'" + name + "' directory created";
-        } catch (IllegalArgumentException e) {
+            if (name.isEmpty()) {
+                return "Error: Directory name cannot be empty";
+            }
+            new Directory(name, fileSystem.getCurrentDirectory());
+            return "'" + name + "' directory created";
+
+        }catch (IllegalArgumentException e) {
             return "Error: " + e.getMessage();
         }
     }

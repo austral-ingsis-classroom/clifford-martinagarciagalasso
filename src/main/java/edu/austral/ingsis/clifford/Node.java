@@ -8,6 +8,6 @@ import java.util.List;
 public interface Node {
     public String getName();
     public Directory getParent();
-    public List<Node> getChildren();
+
 
 }

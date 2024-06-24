@@ -3,7 +3,6 @@ package edu.austral.ingsis.clifford.directories;
 import edu.austral.ingsis.clifford.Node;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Directory implements Node {
@@ -16,7 +15,7 @@ public class Directory implements Node {
         this.name = name;
         this.parent = parent;
         this.children = new ArrayList<>();
-        if(parent!= null) parent.addChild(this);
+        parent.addChild(this);
     }
 
 
@@ -26,7 +25,7 @@ public class Directory implements Node {
         this.children = new ArrayList<>();
     }
     public void addChild(Node node) {
-        children.add(node);
+      children.add(node);
     }
     public void removeChild(Node node) {
         children.remove(node);
@@ -42,7 +41,6 @@ public class Directory implements Node {
         return parent;
     }
 
-    @Override
     public List<Node> getChildren() {
         return children;
     }
