@@ -43,7 +43,7 @@ public class Cd implements Commands {
 
     private String stayInCurrentDirectory(FileSystem fileSystem) {
         Directory currentDirectory = fileSystem.getCurrentDirectory();
-        return "Stayed in the current directory: '" + currentDirectory.getName() + "'";
+        return "Stayed in the current directory '" + currentDirectory.getName() + "'";
     }
 
     private String moveToParentDirectory(FileSystem fileSystem) {
@@ -58,7 +58,7 @@ public class Cd implements Commands {
             if (parentDirectory == fileSystem.getRoot()) {
                 return "moved to root directory '/'";
             }
-            return "moved to directory: '" + parentDirectory.getName() + "'";
+            return "moved to directory '" + parentDirectory.getName() + "'";
         }
     }
 
@@ -77,7 +77,7 @@ public class Cd implements Commands {
             if (targetDirectory == fileSystem.getRoot()) {
                 return "moved to root directory '/'";
             }
-            return "moved to directory: '" + targetDirectory.getName() + "'";
+            return "moved to directory '" + targetDirectory.getName() + "'";
         } else {
             return "Directory '" + params + "' does not exist";
         }

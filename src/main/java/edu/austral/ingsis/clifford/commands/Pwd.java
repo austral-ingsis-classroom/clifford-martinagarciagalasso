@@ -22,10 +22,13 @@ public class Pwd implements Commands{
         Directory currentDir = fileSystem.getCurrentDirectory();
         StringBuilder routeBuilder = new StringBuilder();
 
-        
+
         while (currentDir != null) {
             routeBuilder.insert(0, "/" + currentDir.getName());
             currentDir = currentDir.getParent();
+            if(currentDir.getName().equals("")){ // root directory
+                break;
+            }
         }
 
         return routeBuilder.toString();
